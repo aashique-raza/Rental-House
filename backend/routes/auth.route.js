@@ -1,6 +1,6 @@
 
 import { Router } from "express";
-import { register } from "../controller/auth.controller.js";
+import { login, register } from "../controller/auth.controller.js";
 import multer from "multer";
 
 
@@ -20,6 +20,7 @@ const storage = multer.diskStorage({
   
 
 router.post('/register',upload.single("profileImage"),register)
+router.post('/login',login)
 
 
 export default router
