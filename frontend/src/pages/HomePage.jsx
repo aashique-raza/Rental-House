@@ -1,8 +1,11 @@
 import React from 'react'
+import Slide from '../components/Slide'
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>
+      <Slide/>
+    </div>
   )
 }
 
