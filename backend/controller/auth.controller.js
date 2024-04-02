@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import User from '../models/user.model.js';
 
 
-const register = async () => {
+const register = async (req,res) => {
   try {
     /* Take all information from the form */
     const { firstName, lastName, email, password } = req.body;
