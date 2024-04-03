@@ -1,6 +1,6 @@
 
 import {Router} from 'express'
-import { createListing } from '../controller/listing.controller.js'
+import { createListing,getlistings } from '../controller/listing.controller.js'
 import multer from 'multer';
 
 
@@ -19,6 +19,9 @@ const storage = multer.diskStorage({
   const upload = multer({ storage });
 
 router.post('/createlisting', upload.array("listingPhotos"),createListing)
+
+/* GET lISTINGS BY CATEGORY */
+router.get('/getlistings',getlistings)
 
 
 export default router

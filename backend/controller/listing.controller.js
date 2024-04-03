@@ -66,4 +66,23 @@ const createListing=async(req,res)=>{
 
 }
 
-export {createListing}
+const getlistings=async(req,res)=>{
+  const qCategory = req.query.category
+
+  try {
+    let listings
+    if (qCategory) {
+      listings = await Listing.find({ category: qCategory }).populate("creator")
+    } else {
+      listings = await Listing.find().populate("creator")
+    }
+
+    res.status(200).json(listings)
+  } catch (err) {
+    res.status(404).json({ message: "Fail to fetch listings", error: err.message })
+    console.log(err)
+  }
+
+}
+
+export {createListing,getlistings}
