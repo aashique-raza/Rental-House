@@ -72,9 +72,9 @@ function ListingCard({
   return (
     <div
     className="listing-card"
-    // onClick={() => {
-    //   navigate(`/properties/${listingId}`);
-    // }}
+    onClick={() => {
+      navigate(`/properties/${listingId}`);
+    }}
   >
     <div className="slider-container">
       <div

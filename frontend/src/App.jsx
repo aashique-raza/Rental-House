@@ -6,6 +6,7 @@ import RegisterPage from './pages/RegisterPage'
 import './App.css'
 import Header from './components/Header'
 import CreateListingPage from './pages/CreateListingPage'
+import ListingDetails from './pages/ListingDetails'
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/register' element={<RegisterPage/>}/>
         <Route path='/create-listing' element={<CreateListingPage/>}/>
+        <Route path='/properties/:listingId' element={<ListingDetails/>}/>
       </Routes>
       </BrowserRouter>
     </>
