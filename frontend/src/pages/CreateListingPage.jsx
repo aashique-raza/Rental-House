@@ -18,6 +18,8 @@ import { IoDiamond } from "react-icons/io5";
 import {RemoveCircleOutline,AddCircleOutline} from '@mui/icons-material'
 import {Droppable,DragDropContext,Draggable} from 'react-beautiful-dnd'
 import {IoIosImages} from 'react-icons/io'
+import {useSelector} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -107,6 +109,56 @@ function CreateListingPage() {
     setPhotos((prevPhotos) =>
       prevPhotos.filter((_, index) => index !== indexToRemove)
     );
+  };
+
+
+  const creatorId = useSelector((state) => state.user._id);
+  // console.log(creatorId)
+
+  const navigate = useNavigate();
+
+  const handlePost = async (e) => {
+    e.preventDefault();
+
+    try {
+      /* Create a new FormData onject to handle file uploads */
+      const listingForm = new FormData();
+      listingForm.append("creator", creatorId);
+      listingForm.append("category", category);
+      listingForm.append("type", type);
+      listingForm.append("streetAddress", formLocation.streetAddress);
+      listingForm.append("aptSuite", formLocation.aptSuite);
+      listingForm.append("city", formLocation.city);
+      listingForm.append("province", formLocation.province);
+      listingForm.append("country", formLocation.country);
+      listingForm.append("guestCount", guestCount);
+      listingForm.append("bedroomCount", bedroomCount);
+      listingForm.append("bedCount", bedCount);
+      listingForm.append("bathroomCount", bathroomCount);
+      listingForm.append("amenities", amenities);
+      listingForm.append("title", formDescription.title);
+      listingForm.append("description", formDescription.description);
+      listingForm.append("highlight", formDescription.highlight);
+      listingForm.append("highlightDesc", formDescription.highlightDesc);
+      listingForm.append("price", formDescription.price);
+
+      /* Append each selected photos to the FormData object */
+      photos.forEach((photo) => {
+        listingForm.append("listingPhotos", photo);
+      });
+
+      /* Send a POST request to server */
+      const response = await fetch("http://localhost:5000/api/listing/createlisting", {
+        method: "POST",
+        body: listingForm,
+      });
+
+      if (response.ok) {
+        navigate("/");
+      }
+    } catch (err) {
+      console.log("Publish Listing failed", err.message);
+    }
   };
 
 
@@ -344,7 +396,7 @@ function CreateListingPage() {
   return (
     <div className="create-listing">
         <h1>Publish Your Place</h1>
-        <form >
+        <form onSubmit={handlePost} >
           <div className="create-listing_step1">
             <h2>Step 1: Tell us about your place</h2>
             <hr />
