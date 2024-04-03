@@ -4,6 +4,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import dbConnection from './db/database.js'
 import authRouter from './routes/auth.route.js'
+import listingRouter from './routes/listing.route.js'
 import cors from 'cors'
 dotenv.config()
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({extended:false}))
 
 // load routes
 app.use('/api/auth',authRouter)
+app.use('/api/listing',listingRouter)
 
 
 app.listen(PORT,()=>{
