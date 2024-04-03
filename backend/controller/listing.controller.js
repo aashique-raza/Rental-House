@@ -85,4 +85,14 @@ const getlistings=async(req,res)=>{
 
 }
 
-export {createListing,getlistings}
+const listingDetails=async (req, res) => {
+  try {
+    const { listingId } = req.params
+    const listing = await Listing.findById(listingId).populate("creator")
+    res.status(202).json(listing)
+  } catch (err) {
+    res.status(404).json({ message: "Listing can not found!", error: err.message })
+  }
+}
+
+export {createListing,getlistings,listingDetails}
