@@ -115,7 +115,7 @@ function ListingCard({
     </h3>
     <p>{category}</p>
 
-    {/* {!booking ? (
+    {!booking ? (
       <>
         <p>{type}</p>
         <p>
@@ -131,7 +131,7 @@ function ListingCard({
           <span>${totalPrice}</span> total
         </p>
       </>
-    )} */}
+    )}
 
     {/* <button
       className="favorite"

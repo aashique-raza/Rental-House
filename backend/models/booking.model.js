@@ -1,18 +1,20 @@
 import mongoose from 'mongoose'
+import User from './user.model.js';
+import Listing from './listing.model.js';
 
 const BookingSchema = new mongoose.Schema(
   {
     customerId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: User,
     },
     hostId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: User,
     },
     listingId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Listing",
+      ref: Listing,
     },
     startDate: {
       type: String,

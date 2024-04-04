@@ -38,14 +38,14 @@ function TripList() {
   }, []);
 
 
+  if(loading){
+return <Loader/>
+  }
 
-  return 
-    loading ? (
-        <Loader />
-      ) : (
-        <>
-          
-          <h1 className="title-list">Your Trip List</h1>
+
+  return (
+    <>
+    <h1 className="title-list">Your Trip List</h1>
           <div className="list">
             {tripList?.map(({ listingId, hostId, startDate, endDate, totalPrice, booking=true }) => (
               <ListingCard
@@ -62,10 +62,17 @@ function TripList() {
                 booking={booking}
               />
             ))}
+        
           </div>
           
-        </>
+    </>
+
   )
+  
+          
+          
+      
+  
 }
 
 export default TripList
