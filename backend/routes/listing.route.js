@@ -1,6 +1,6 @@
 
 import {Router} from 'express'
-import { createListing,getlistings,listingDetails } from '../controller/listing.controller.js'
+import { createListing,getlistings,listingDetails ,getListingBysearch} from '../controller/listing.controller.js'
 import multer from 'multer';
 
 
@@ -22,6 +22,10 @@ router.post('/createlisting', upload.array("listingPhotos"),createListing)
 
 /* GET lISTINGS BY CATEGORY */
 router.get('/getlistings',getlistings)
+
+/* GET LISTINGS BY SEARCH */
+router.get("/search/:search", getListingBysearch)
+
 
 /* LISTING DETAILS */
 router.get("/:listingId", listingDetails)

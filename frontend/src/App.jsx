@@ -12,6 +12,7 @@ import WishList from './pages/WishList'
 import Properties from './pages/Properties'
 import Reservation from './pages/Reservation'
 import Category from './pages/Category'
+import Search from './pages/Search'
 
 function App() {
   
@@ -30,6 +31,7 @@ function App() {
         <Route path="/:userId/properties" element={<Properties />} />
         <Route path="/:userId/reservations" element={<Reservation />} />
         <Route path="/properties/category/:category" element={<Category />} />
+        <Route path="/properties/search/:search" element={<Search />} />
       </Routes>
       </BrowserRouter>
     </>
