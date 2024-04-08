@@ -13,6 +13,7 @@ import Properties from './pages/Properties'
 import Reservation from './pages/Reservation'
 import Category from './pages/Category'
 import Search from './pages/Search'
+import Footer from './components/Footer'
 
 function App() {
   
@@ -33,6 +34,7 @@ function App() {
         <Route path="/properties/category/:category" element={<Category />} />
         <Route path="/properties/search/:search" element={<Search />} />
       </Routes>
+      <Footer/>
       </BrowserRouter>
     </>
   )
