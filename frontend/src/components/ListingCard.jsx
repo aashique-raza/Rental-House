@@ -43,27 +43,27 @@ function ListingCard({
   const dispatch = useDispatch();
 
 
-//    /* ADD TO WISHLIST */
-//    const user = useSelector((state) => state.user);
-//    const wishList = user?.wishList || [];
+   /* ADD TO WISHLIST */
+   const user = useSelector((state) => state.user);
+   const wishList = user?.wishList || [];
  
-//    const isLiked = wishList?.find((item) => item?._id === listingId);
+   const isLiked = wishList?.find((item) => item?._id === listingId);
  
-//    const patchWishList = async () => {
-//      if (user?._id !== creator._id) {
-//      const response = await fetch(
-//        `http://localhost:3001/users/${user?._id}/${listingId}`,
-//        {
-//          method: "PATCH",
-//          header: {
-//            "Content-Type": "application/json",
-//          },
-//        }
-//      );
-//      const data = await response.json();
-//      dispatch(setWishList(data.wishList));
-//    } else { return }
-//    };
+   const patchWishList = async () => {
+     if (user?._id !== creator._id) {
+     const response = await fetch(
+       `http://localhost:5000/api/user/${user?._id}/${listingId}`,
+       {
+         method: "PATCH",
+         header: {
+           "Content-Type": "application/json",
+         },
+       }
+     );
+     const data = await response.json();
+     dispatch(setWishList(data.wishList));
+   } else { return }
+   };
  
 
 
@@ -133,7 +133,7 @@ function ListingCard({
       </>
     )}
 
-    {/* <button
+    <button
       className="favorite"
       onClick={(e) => {
         e.stopPropagation();
@@ -146,7 +146,7 @@ function ListingCard({
       ) : (
         <Favorite sx={{ color: "white" }} />
       )}
-    </button> */}
+    </button>
   </div>
   )
 }

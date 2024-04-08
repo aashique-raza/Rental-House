@@ -9,6 +9,9 @@ import CreateListingPage from './pages/CreateListingPage'
 import ListingDetails from './pages/ListingDetails'
 import TripList from './pages/TripList'
 import WishList from './pages/WishList'
+import Properties from './pages/Properties'
+import Reservation from './pages/Reservation'
+import Category from './pages/Category'
 
 function App() {
   
@@ -24,6 +27,9 @@ function App() {
         <Route path='/properties/:listingId' element={<ListingDetails/>}/>
         <Route path='/:userId/trips' element={<TripList/>}/>
         <Route path="/:userId/wishList" element={<WishList />} />
+        <Route path="/:userId/properties" element={<Properties />} />
+        <Route path="/:userId/reservations" element={<Reservation />} />
+        <Route path="/properties/category/:category" element={<Category />} />
       </Routes>
       </BrowserRouter>
     </>
